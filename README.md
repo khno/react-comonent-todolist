@@ -14,3 +14,6 @@ npm start
 ```
 npm run build
 ```
+
+## Screen shot
+[img](https://raw.githubusercontent.com/khno/react-comonent-todolist/master/screen-shot.png)
