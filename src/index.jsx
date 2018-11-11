@@ -1,39 +1,47 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import "./index.css";
-import List from "./List";
+import ListItems from "./ListItems";
+import Header from "./Header";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: "",
+      todoItem: "",
       items: []
     };
+    
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(event) {
-    this.setState({ term: event.target.value });
+    this.setState({ 
+      todoItem: event.target.value 
+    });
   }
 
   onSubmit(event) {
     event.preventDefault();
     this.setState({
-      term: "",
-      items: [...this.state.items, this.state.term]
+      todoItem: "",
+      items: [
+        ...this.state.items, 
+        this.state.todoItem
+      ]
     });
   }
 
   render() {
     return (
-      <div>
-        <form className="App" onSubmit={this.onSubmit}>
-          <input value={this.state.term} onChange={this.onChange} />
-          <button>提交</button>
+      <div className="container">
+        <Header title="TodoList"/>
+        <form className="form-wrap" onSubmit={this.onSubmit}>
+          <input value={this.state.todoItem} onChange={this.onChange} />
+          <button>Submit</button>
         </form>
-        <List items={this.state.items} />
+        <ListItems items={this.state.items} />
       </div>
     );
   }
